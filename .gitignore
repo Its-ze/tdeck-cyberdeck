@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+.playwright-cli/
+output/
+*.log
+__pycache__/
+*.pyc

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">T-Deck Cyberdeck icon</title>
+  <desc id="desc">A dark handheld deck with cyan radio and USB link marks.</desc>
+  <defs>
+    <linearGradient id="g" x1="32" y1="36" x2="224" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35c6c9"/>
+      <stop offset=".55" stop-color="#6aa8ff"/>
+      <stop offset="1" stop-color="#45d07d"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="42" fill="#07090b"/>
+  <rect x="36" y="52" width="184" height="132" rx="18" fill="#10171a" stroke="url(#g)" stroke-width="5"/>
+  <rect x="56" y="74" width="144" height="74" rx="8" fill="#050708" stroke="#2a363b" stroke-width="3"/>
+  <path d="M82 110h56m-56 22h92" stroke="#35c6c9" stroke-width="8" stroke-linecap="round"/>
+  <path d="M90 200h76m-56 18h36" stroke="url(#g)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M180 92c10 9 10 28 0 38m18-56c22 22 22 58 0 80" fill="none" stroke="#45d07d" stroke-width="7" stroke-linecap="round"/>
+</svg>

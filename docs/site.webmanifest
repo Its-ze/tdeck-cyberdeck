@@ -1,0 +1,16 @@
+{
+  "name": "T-Deck Cyberdeck Flasher",
+  "short_name": "TDeckCyber",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#07090b",
+  "theme_color": "#35c6c9",
+  "icons": [
+    {
+      "src": "assets/tdeck-cyberdeck-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

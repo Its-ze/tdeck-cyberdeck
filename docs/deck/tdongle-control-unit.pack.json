@@ -1,0 +1,39 @@
+{
+  "schema": "https://its-ze.github.io/deck-pack.schema.v1.json",
+  "id": "tdeck.cyberdeck.tdongle-control-unit",
+  "name": "T-Dongle CyberDeck Control Unit",
+  "version": "0.2.12",
+  "visibility": "public",
+  "publisher": "Its-ze",
+  "summary": "CyberDeck Link control-unit firmware for the LilyGO T-Dongle S3.",
+  "hardware": [
+    "LilyGO T-Dongle S3",
+    "ESP32-S3 native USB boards"
+  ],
+  "repo": "https://github.com/Its-ze/tdeck-cyberdeck",
+  "homepage": "https://its-ze.github.io/tdeck-cyberdeck/",
+  "license": "MIT",
+  "tags": [
+    "tdeck",
+    "tdongle",
+    "cyberdeck",
+    "esp32-s3",
+    "web-serial"
+  ],
+  "install": {
+    "type": "esp-web-tools",
+    "chipFamily": "ESP32-S3",
+    "title": "Flash T-Dongle CyberDeck Control Unit",
+    "url": "https://its-ze.github.io/tdeck-cyberdeck/",
+    "manifest": "https://its-ze.github.io/tdeck-cyberdeck/manifest.json",
+    "warning": "Flashing overwrites the firmware currently on the selected dongle."
+  },
+  "relatedPacks": [
+    {
+      "id": "voidlink.tdongle.usb-adapter",
+      "name": "VoidLink USB Adapter",
+      "marketplace": "https://its-ze.github.io/tdongle-usb-adapter/deck/marketplace-index.json",
+      "installer": "https://its-ze.github.io/tdongle-usb-adapter/"
+    }
+  ]
+}

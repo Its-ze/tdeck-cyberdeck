@@ -1,0 +1,47 @@
+{
+    "name":  "tdongle-control-unit",
+    "version":  "0.2.12",
+    "target":  "LilyGO ESP32-S3 T-Dongle / ESP32-S3 DevKit compatible",
+    "generated":  "2026-06-18T10:38:59",
+    "warning":  "Flashing overwrites the current dongle firmware. Back up first unless you accept the risk.",
+    "offsets":  [
+                    {
+                        "offset":  0,
+                        "path":  "firmware/tdongle-control-unit-0.2.12/bootloader.bin"
+                    },
+                    {
+                        "offset":  32768,
+                        "path":  "firmware/tdongle-control-unit-0.2.12/partitions.bin"
+                    },
+                    {
+                        "offset":  57344,
+                        "path":  "firmware/tdongle-control-unit-0.2.12/boot_app0.bin"
+                    },
+                    {
+                        "offset":  65536,
+                        "path":  "firmware/tdongle-control-unit-0.2.12/firmware.bin"
+                    }
+                ],
+    "files":  [
+                  {
+                      "name":  "boot_app0.bin",
+                      "length":  8192,
+                      "sha256":  "F94C5D786A7A8FAB06AC5D10E33BF37711A6697636DC037559EA19CC410A17F0"
+                  },
+                  {
+                      "name":  "bootloader.bin",
+                      "length":  14032,
+                      "sha256":  "1033730A6DF733F53A7A347353C1C5450547F76E98E0746DA633079310A563B9"
+                  },
+                  {
+                      "name":  "firmware.bin",
+                      "length":  862144,
+                      "sha256":  "A1E41BD9A046C51A6104681BBCF944C350D475D4636CC3CBF46404814ECFCC59"
+                  },
+                  {
+                      "name":  "partitions.bin",
+                      "length":  3072,
+                      "sha256":  "BD0F7954ACA2EF7D925EE21AAA1F3DC8822D1D6CE5CBBD26A135E5886BFFF6CE"
+                  }
+              ]
+}

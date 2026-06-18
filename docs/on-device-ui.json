@@ -1,0 +1,308 @@
+{
+  "schema": 1,
+  "name": "T-Deck On-Device CyberDeck UI",
+  "target": {
+    "device": "LilyGO T-Deck",
+    "screen": "320x240",
+    "input": ["keyboard", "trackball", "back", "enter"],
+    "rule": "Every cyberdeck operation must have a T-Deck screen and keyboard path. Browser and desktop tools are optional helpers."
+  },
+  "themes": [
+    {
+      "id": "q10_classic",
+      "label": "Q10 Classic",
+      "description": "Black glass, compact square screen, silver dividers, blue focus highlights, and tight physical-keyboard spacing inspired by the BlackBerry Q10.",
+      "brandSafe": "No BlackBerry logo, wallpaper, or official branding is included.",
+      "palette": {
+        "body": "#050607",
+        "panel": "#0b0d0f",
+        "key": "#15181b",
+        "screen": "#05090b",
+        "line": "#56606a",
+        "text": "#f4f7f8",
+        "muted": "#a8b0b5",
+        "accent": "#31a7d7",
+        "ok": "#69d28f",
+        "warn": "#d9b65f",
+        "bad": "#df6a64"
+      }
+    }
+  ],
+  "globalKeys": [
+    { "key": "TrackballUp", "action": "list.previous", "label": "Previous item" },
+    { "key": "TrackballDown", "action": "list.next", "label": "Next item" },
+    { "key": "TrackballLeft", "action": "nav.back", "label": "Back" },
+    { "key": "TrackballRight", "action": "item.open", "label": "Open" },
+    { "key": "Enter", "action": "item.open", "label": "Select" },
+    { "key": "Esc", "action": "nav.back", "label": "Back" },
+    { "key": "Backspace", "action": "nav.back", "label": "Back" },
+    { "key": "/", "action": "search.focus", "label": "Filter current list" },
+    { "key": "?", "action": "help.open", "label": "Show help overlay" },
+    { "key": "Ctrl+L", "action": "launcher.open", "label": "CyberDeck launcher" },
+    { "key": "Ctrl+R", "action": "remote.payloads", "label": "Remote payloads" },
+    { "key": "Ctrl+S", "action": "sd.open", "label": "SD Card" },
+    { "key": "Ctrl+M", "action": "mesh.open", "label": "Mesh System" },
+    { "key": "Ctrl+K", "action": "keyboard.bridge", "label": "Keyboard Bridge" },
+    { "key": "Ctrl+D", "action": "dongle.lifecycle", "label": "Dongle Lifecycle" },
+    { "key": "Ctrl+P", "action": "dongle.autoPair", "label": "Dongle Auto Pair" },
+    { "key": "Ctrl+V", "action": "voidlink.open", "label": "VoidLink USB Adapter" },
+    { "key": "Ctrl+T", "action": "display.theme.q10-classic", "label": "Q10 Classic theme" }
+  ],
+  "screens": [
+    {
+      "id": "launcher",
+      "title": "ITSZ CyberDeck",
+      "description": "Primary on-device program launcher.",
+      "entries": [
+        "mesh_system",
+        "keyboard_bridge",
+        "dongle_console",
+        "dongle_lifecycle",
+        "dongle_auto_pair",
+        "remote_payloads",
+        "node_tools",
+        "sd_card",
+        "control_panel",
+        "dongle_flasher",
+        "voidlink_usb_adapter",
+        "signal_radar",
+        "bambu_control"
+      ],
+      "keys": {
+        "M": "mesh_system.open",
+        "K": "keyboard_bridge.open",
+        "D": "dongle_console.open",
+        "L": "dongle_lifecycle.open",
+        "P": "dongle_auto_pair.open",
+        "R": "remote_payloads.open",
+        "S": "sd_card.open",
+        "F": "dongle_flasher.open",
+        "V": "voidlink_usb_adapter.open"
+      }
+    },
+    {
+      "id": "mesh_system",
+      "title": "Mesh System",
+      "description": "Mesh status, compose, nodes, trace, GPS, and channel screens.",
+      "actions": ["mesh.status", "mesh.compose", "mesh.nodes", "mesh.trace", "mesh.position", "mesh.channels"],
+      "textInput": ["mesh.compose"],
+      "keys": {
+        "C": "mesh.compose",
+        "N": "mesh.nodes",
+        "G": "mesh.position",
+        "T": "mesh.trace",
+        "H": "mesh.channels"
+      }
+    },
+    {
+      "id": "keyboard_bridge",
+      "title": "Keyboard Bridge",
+      "description": "Use the T-Deck keyboard as local entry, remote entry, or host-output source.",
+      "actions": ["keyboard.capture", "keyboard.text", "keyboard.control", "host.write"],
+      "textInput": ["keyboard.text", "host.write"],
+      "keys": {
+        "Enter": "keyboard.send",
+        "Ctrl+Enter": "host.write",
+        "Tab": "keyboard.mode.next"
+      }
+    },
+    {
+      "id": "dongle_console",
+      "title": "Dongle Console",
+      "description": "Read T-Dongle status, queued events, payload catalog, and host output state.",
+      "actions": ["dongle.status", "dongle.events", "pairing.status", "saved-profile.read", "payloads.list", "payload.run", "host.write"],
+      "textInput": ["host.write"],
+      "keys": {
+        "E": "dongle.events",
+        "P": "payloads.list",
+        "W": "host.write",
+        "R": "dongle.refresh"
+      }
+    },
+    {
+      "id": "dongle_lifecycle",
+      "title": "Dongle Lifecycle",
+      "description": "Pair, save, write settings, and request guarded dongle firmware writes from the T-Deck screen.",
+      "actions": ["pairing.status", "pair.begin", "pair.confirm", "profile.save", "saved-profile.read", "config.write", "flash.request", "flash.self-update", "flash.bootloader"],
+      "textInput": ["pair.confirm", "config.write", "flash.self-update"],
+      "savePaths": [
+        "/zdeck/cyberdeck/dongle-pairing.json",
+        "/zdeck/cyberdeck/dongle-profile.json"
+      ],
+      "keys": {
+        "S": "pairing.status",
+        "B": "pair.begin",
+        "C": "pair.confirm",
+        "P": "profile.save",
+        "W": "config.write",
+        "U": "flash.self-update",
+        "H": "flash.bootloader"
+      },
+      "flashGuard": "Self-update requires a firmware URL and confirm token WRITE_APP. Full bootloader/partition flashing remains browser/PowerShell or future verified USB-host support."
+    },
+    {
+      "id": "dongle_auto_pair",
+      "title": "Dongle Auto Pair",
+      "description": "Popup shown when the T-Deck USB host sees a T-Dongle cyberdeck.dongle.attach beacon.",
+      "trigger": {
+        "transport": "usb-cdc",
+        "match": {
+          "type": "cyberdeck.dongle.attach",
+          "protocol": "cyberdeck-link-v0"
+        },
+        "probeCommand": "{\"cmd\":\"attachProbe\",\"deckId\":\"cyberdeck-tdeck\",\"deckName\":\"CyberDeck T-Deck\"}"
+      },
+      "popup": {
+        "title": "T-Dongle Found",
+        "message": "Pair this T-Dongle for remote use?",
+        "primary": "Pair",
+        "secondary": "Not now"
+      },
+      "actions": ["usb.attach.detect", "attach.prompt", "pairing.status", "pair.begin", "pair.confirm", "profile.save", "sd.pairing.save"],
+      "savePaths": [
+        "/zdeck/cyberdeck/dongle-pairing.json",
+        "/zdeck/cyberdeck/dongle-profile.json"
+      ],
+      "keys": {
+        "Enter": "pair.begin",
+        "Y": "pair.begin",
+        "N": "attach.dismiss",
+        "Esc": "attach.dismiss",
+        "S": "pairing.status"
+      },
+      "acceptFlow": [
+        "read cyberdeck.dongle.attach",
+        "show popup",
+        "send pairBegin",
+        "show six digit code",
+        "send pairConfirm after code entry",
+        "write dongle-pairing.json to SD",
+        "save compact dongle-profile.json"
+      ]
+    },
+    {
+      "id": "remote_payloads",
+      "title": "Remote Payloads",
+      "description": "Run safe remote-mode command templates from the T-Deck itself.",
+      "actions": [
+        "remote.deck-ready",
+        "remote.dongle-auto-pair",
+        "remote.dongle-pairing",
+        "remote.dongle-save-profile",
+        "remote.dongle-write-bridge-url",
+        "remote.flash-request-status",
+        "remote.flash-self-update-prep",
+        "remote.flash-bootloader-help",
+        "remote.usb-keyboard-handshake",
+        "remote.mesh-situational-check",
+        "remote.sd-field-workspace",
+        "remote.backup-status-only",
+        "remote.note-new-template",
+        "remote.nav-home-refresh",
+        "remote.usb-host-marker",
+        "remote.sd-log-export-request",
+        "remote.lab-slots-ready"
+      ],
+      "textInput": ["remote.note-new-template", "remote.usb-host-marker"],
+      "privateBoundary": "/zdeck/backups",
+      "keys": {
+        "D": "remote.deck-ready",
+        "A": "remote.dongle-auto-pair",
+        "P": "remote.dongle-pairing",
+        "F": "remote.flash-request-status",
+        "U": "remote.usb-keyboard-handshake",
+        "M": "remote.mesh-situational-check",
+        "S": "remote.sd-field-workspace",
+        "B": "remote.backup-status-only"
+      }
+    },
+    {
+      "id": "sd_card",
+      "title": "SD Card",
+      "description": "Safe SD browser, file preview, notes, logs, maps, and backup status.",
+      "actions": ["sd.status", "sd.list", "sd.open", "sd.export", "sd.backups", "sd.maps", "note.new", "note.append", "log.export"],
+      "textInput": ["sd.path", "note.new", "note.append"],
+      "privateBoundary": "/zdeck/backups",
+      "keys": {
+        "R": "sd.root",
+        "L": "sd.logs",
+        "N": "sd.notes",
+        "M": "sd.maps",
+        "B": "sd.backup-status",
+        "E": "log.export"
+      }
+    },
+    {
+      "id": "dongle_flasher",
+      "title": "Dongle Flasher",
+      "description": "On-device prep/status workflow for T-Dongle firmware, plus guarded app-image self-update from a T-Deck-hosted firmware URL.",
+      "actions": ["flash.status", "flash.assets", "flash.request", "flash.self-update", "flash.backup-status", "flash.boot-help", "flash.browser-url"],
+      "keys": {
+        "S": "flash.status",
+        "A": "flash.assets",
+        "U": "flash.self-update",
+        "B": "flash.backup-status",
+        "H": "flash.boot-help"
+      },
+      "limitation": "T-Deck can request dongle app-image self-update over CyberDeck Link. T-Deck-only full bootloader/partition flashing of another ESP32-S3 over USB is not marked complete until USB-host flashing support is implemented and verified on the T-Deck hardware."
+    },
+    {
+      "id": "voidlink_usb_adapter",
+      "title": "VoidLink USB Adapter",
+      "description": "External marketplace pack for flashing a T-Dongle S3 as a USB NCM virtual network adapter.",
+      "actions": ["marketplace.open", "marketplace.refresh", "pack.install", "adapter.flash", "adapter.status"],
+      "links": {
+        "marketplace": "https://its-ze.github.io/tdongle-usb-adapter/deck/marketplace-index.json",
+        "installer": "https://its-ze.github.io/tdongle-usb-adapter/",
+        "repo": "https://github.com/Its-ze/tdongle-usb-adapter"
+      },
+      "keys": {
+        "M": "marketplace.open",
+        "R": "marketplace.refresh",
+        "I": "pack.install",
+        "F": "adapter.flash",
+        "S": "adapter.status"
+      },
+      "flashGuard": "VoidLink flashing overwrites the selected dongle. Back up the current T-Dongle control-unit build before installing the USB NCM adapter firmware."
+    },
+    {
+      "id": "control_panel",
+      "title": "Control Panel",
+      "description": "Wi-Fi, GPS, display, backup, update, Bluetooth, and bridge settings.",
+      "actions": ["wifi.toggle", "gps.status", "display.theme", "display.theme.q10-classic", "backup.settings", "updates.check", "bridge.url"],
+      "textInput": ["bridge.url"],
+      "keys": {
+        "T": "display.theme",
+        "Q": "display.theme.q10-classic",
+        "W": "wifi.toggle",
+        "G": "gps.status",
+        "B": "backup.settings",
+        "U": "updates.check"
+      },
+      "themes": ["q10_classic"]
+    }
+  ],
+  "completionRule": {
+    "readyOnTDeckOnly": [
+      "mesh_system",
+      "keyboard_bridge",
+      "dongle_console",
+      "dongle_lifecycle",
+      "dongle_auto_pair",
+      "remote_payloads",
+      "node_tools",
+      "sd_card",
+      "control_panel"
+    ],
+    "needsHardwareSupport": [
+      {
+        "id": "dongle_flasher",
+        "reason": "Flashing a separate ESP32-S3 from the T-Deck requires USB-host flashing support or another verified transport."
+      },
+      {
+        "id": "voidlink_usb_adapter",
+        "reason": "The deck can point to the public pack and installer now; full USB-host flashing from the T-Deck itself still needs verified hardware support."
+      }
+    ]
+  }
+}

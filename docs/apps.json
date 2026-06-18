@@ -1,0 +1,242 @@
+{
+  "version": 3,
+  "launcherTitle": "ITSZ CyberDeck",
+  "defaultBridgeUrl": "http://192.168.4.1",
+  "marketplaceSources": [
+    {
+      "id": "voidlink_public",
+      "label": "VoidLink Public Deck Packs",
+      "url": "https://its-ze.github.io/tdongle-usb-adapter/deck/marketplace-index.json",
+      "homepage": "https://its-ze.github.io/tdongle-usb-adapter/",
+      "primaryPack": "voidlink.tdongle.usb-adapter"
+    }
+  ],
+  "apps": [
+    {
+      "id": "mesh_system",
+      "label": "Mesh System",
+      "shortLabel": "Mesh",
+      "status": "mvp",
+      "group": "Comms",
+      "transport": "meshtastic",
+      "actions": [
+        "mesh.status",
+        "mesh.compose",
+        "mesh.nodes",
+        "mesh.trace",
+        "mesh.position",
+        "mesh.channels"
+      ],
+      "description": "Primary Meshtastic program using the public CyberDeck sample profile and existing on-device config."
+    },
+    {
+      "id": "keyboard_bridge",
+      "label": "Keyboard Bridge",
+      "shortLabel": "Keys",
+      "status": "mvp",
+      "group": "Control",
+      "transport": "cyberdeck-link-v0",
+      "actions": [
+        "keyboard.capture",
+        "keyboard.text",
+        "keyboard.control"
+      ],
+      "description": "Use a browser or host computer keyboard as T-Deck text/control input through the T-Dongle."
+    },
+    {
+      "id": "dongle_console",
+      "label": "Dongle Console",
+      "shortLabel": "Dongle",
+      "status": "mvp",
+      "group": "Control",
+      "transport": "cyberdeck-link-v0",
+      "actions": [
+        "dongle.status",
+        "dongle.events",
+        "pairing.status",
+        "saved-profile.read",
+        "host.write"
+      ],
+      "description": "Read bridge events and write text to the T-Dongle USB serial host."
+    },
+    {
+      "id": "dongle_lifecycle",
+      "label": "Dongle Lifecycle",
+      "shortLabel": "Pair",
+      "status": "mvp",
+      "group": "System",
+      "transport": "cyberdeck-link-v0",
+      "actions": [
+        "pairing.status",
+        "pair.begin",
+        "pair.confirm",
+        "profile.save",
+        "saved-profile.read",
+        "config.write",
+        "flash.request",
+        "flash.self-update",
+        "flash.bootloader"
+      ],
+      "description": "Pair the T-Deck to the T-Dongle, save the dongle profile to SD, persist bridge settings, and request guarded firmware writes from the T-Deck screen."
+    },
+    {
+      "id": "dongle_auto_pair",
+      "label": "Dongle Auto Pair",
+      "shortLabel": "AutoPair",
+      "status": "mvp",
+      "group": "System",
+      "transport": "usb-cdc + cyberdeck-link-v0",
+      "actions": [
+        "usb.attach.detect",
+        "attach.prompt",
+        "pairing.status",
+        "pair.begin",
+        "pair.confirm",
+        "profile.save",
+        "sd.pairing.save"
+      ],
+      "description": "Detect a plugged-in T-Dongle attach beacon and pop up a T-Deck confirmation prompt before pairing it for remote use."
+    },
+    {
+      "id": "remote_payloads",
+      "label": "Remote Payloads",
+      "shortLabel": "Payloads",
+      "status": "mvp",
+      "group": "Remote",
+      "transport": "cyberdeck-link-v0",
+      "actions": [
+        "payloads.list",
+        "payload.run",
+        "remote.deck-ready",
+        "remote.dongle-auto-pair",
+        "remote.dongle-pairing",
+        "remote.dongle-save-profile",
+        "remote.flash-request-status",
+        "remote.mesh-situational-check",
+        "remote.sd-field-workspace",
+        "remote.backup-status-only",
+        "remote.usb-host-marker"
+      ],
+      "description": "Run safe remote-mode command templates directly from the T-Deck keyboard and screen."
+    },
+    {
+      "id": "node_tools",
+      "label": "Node Tools",
+      "shortLabel": "Nodes",
+      "status": "existing",
+      "group": "Comms",
+      "transport": "meshtastic",
+      "actions": [
+        "node.list",
+        "node.trace",
+        "node.favorite",
+        "node.dm"
+      ],
+      "description": "Expose existing node, direct message, trace route, and favorite controls in the CyberDeck launcher."
+    },
+    {
+      "id": "sd_card",
+      "label": "SD Card",
+      "shortLabel": "SD",
+      "status": "mvp",
+      "group": "Field",
+      "transport": "tdeck-sd",
+      "actions": [
+        "sd.status",
+        "sd.list",
+        "sd.open",
+        "sd.export",
+        "sd.backups",
+        "sd.maps",
+        "note.new",
+        "note.append",
+        "log.export"
+      ],
+      "description": "Browse the T-Deck SD card, inspect safe files, request exports, and write field notes without exposing private backups by default."
+    },
+    {
+      "id": "control_panel",
+      "label": "Control Panel",
+      "shortLabel": "Panel",
+      "status": "existing",
+      "group": "System",
+      "transport": "zdeck-system",
+      "actions": [
+        "wifi.toggle",
+        "gps.status",
+        "display.theme",
+        "display.theme.q10-classic",
+        "backup.settings",
+        "updates.check"
+      ],
+      "description": "Group Wi-Fi, GPS, display, backup, update tools, and the Q10 Classic cyberdeck theme under one control panel."
+    },
+    {
+      "id": "dongle_flasher",
+      "label": "Dongle Flasher",
+      "shortLabel": "Flash",
+      "status": "mvp",
+      "group": "System",
+      "transport": "zdeck-system",
+      "actions": [
+        "flash.status",
+        "flash.assets",
+        "flash.request",
+        "flash.self-update",
+        "flash.backup-status",
+        "flash.boot-help",
+        "flash.browser-url"
+      ],
+      "description": "On-device prep/status workflow for T-Dongle firmware, including guarded app-image self-update from a T-Deck-hosted firmware URL. Full bootloader/partition flashing still requires browser/PowerShell or future verified T-Deck USB-host flashing support."
+    },
+    {
+      "id": "voidlink_usb_adapter",
+      "label": "VoidLink USB Adapter",
+      "shortLabel": "VoidLink",
+      "status": "external",
+      "group": "System",
+      "transport": "deck-marketplace + esp-web-tools",
+      "actions": [
+        "marketplace.open",
+        "marketplace.refresh",
+        "pack.install",
+        "adapter.flash",
+        "adapter.status"
+      ],
+      "links": {
+        "marketplace": "https://its-ze.github.io/tdongle-usb-adapter/deck/marketplace-index.json",
+        "installer": "https://its-ze.github.io/tdongle-usb-adapter/",
+        "repo": "https://github.com/Its-ze/tdongle-usb-adapter"
+      },
+      "description": "External public pack for flashing a separate T-Dongle S3 as the VoidLink USB NCM virtual adapter."
+    },
+    {
+      "id": "signal_radar",
+      "label": "Signal Radar",
+      "shortLabel": "Radar",
+      "status": "planned",
+      "group": "Lab",
+      "transport": "http",
+      "actions": [
+        "radar.open",
+        "radar.listen",
+        "radar.scan"
+      ],
+      "description": "Shortcut/control surface for the existing Signal Radar service."
+    },
+    {
+      "id": "bambu_control",
+      "label": "Bambu Control",
+      "shortLabel": "Bambu",
+      "status": "planned",
+      "group": "Lab",
+      "transport": "http-bridge",
+      "actions": [
+        "bambu.status",
+        "bambu.light",
+        "bambu.refresh"
+      ],
+      "description": "Read and control BambuDeck/Bambu printer status through a bridge without embedding secrets."
+    }
+  ]
+}

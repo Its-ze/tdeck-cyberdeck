@@ -1,0 +1,28 @@
+{
+    "name":  "T-Dongle CyberDeck Control Unit",
+    "version":  "0.2.12",
+    "new_install_prompt_erase":  true,
+    "builds":  [
+                   {
+                       "chipFamily":  "ESP32-S3",
+                       "parts":  [
+                                     {
+                                         "offset":  0,
+                                         "path":  "firmware/tdongle-control-unit-0.2.12/bootloader.bin"
+                                     },
+                                     {
+                                         "offset":  32768,
+                                         "path":  "firmware/tdongle-control-unit-0.2.12/partitions.bin"
+                                     },
+                                     {
+                                         "offset":  57344,
+                                         "path":  "firmware/tdongle-control-unit-0.2.12/boot_app0.bin"
+                                     },
+                                     {
+                                         "offset":  65536,
+                                         "path":  "firmware/tdongle-control-unit-0.2.12/firmware.bin"
+                                     }
+                                 ]
+                   }
+               ]
+}

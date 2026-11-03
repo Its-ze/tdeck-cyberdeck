@@ -25,6 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Record installer deployment revision
+        env:
+          INSTALLER_SHA: ${{ github.sha }}
+        run: python3 -c 'import json,os,pathlib; pathlib.Path("docs/revision.json").write_text(json.dumps({"installer_sha":os.environ["INSTALLER_SHA"],"firmware_version":"0.2.12","firmware_source_sha":None,"hardware_acceptance":"candidate 0.2.15 pending"},indent=2)+"\n")'
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

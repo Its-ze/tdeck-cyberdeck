@@ -55,5 +55,13 @@
   </section>
 </main>
 <script src="app.js"></script>
+<section aria-label="Release provenance" style="max-width:1100px;margin:2rem auto;padding:1rem">
+<h2>Release and device acceptance</h2>
+<p>The installer continues to serve the known-good 0.2.12 bundle. Its historical firmware source revision is unknown.</p>
+<p>Recovered source 0.2.15 now builds on Linux, but is a build-only candidate pending physical device acceptance. It is not offered for installation here. Back up and identify your exact device before any firmware write.</p>
+<p>Candidate source revision: <code>050884d33003461ece4e1272bc1e80cf5662a2b7</code>. No hardware flashing was performed during software verification.</p>
+<p id="releaseRevision">Installer deployment revision: loading…</p>
+<script>fetch('./revision.json').then(r=>{if(!r.ok)throw Error('unavailable');return r.json()}).then(r=>{document.getElementById('releaseRevision').textContent='Installer deployment revision: '+r.installer_sha}).catch(()=>{document.getElementById('releaseRevision').textContent='Installer deployment revision unavailable; firmware hashes remain listed above.'});</script>
+</section>
 </body>
 </html>
